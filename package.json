@@ -15,5 +15,13 @@
     "download"
   ],
   "author": "José Sousa",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "ytdl-core": "~0.7.10",
+    "fs": "0.0.2",
+    "ffmpeg": "0.0.4",
+    "fluent-ffmpeg": "~2.0.1",
+    "underscore": "~1.8.3",
+    "escape-string-regexp": "~1.0.5"
+  }
 }
