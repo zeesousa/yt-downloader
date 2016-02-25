@@ -1,8 +1,11 @@
 var fs = require('fs');
 var ytdl = require('ytdl-core');
+var ffmpegstatic = require('ffmpeg-static');
 var ffmpeg = require('fluent-ffmpeg');
 var _ = require('underscore');
 var escapeStringRegexp = require('escape-string-regexp');
+
+ffmpeg.setFfmpegPath(ffmpegstatic.path);
 
 if (!fs.existsSync('./media')) {
 	fs.mkdirSync('./media');
