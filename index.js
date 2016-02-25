@@ -33,9 +33,11 @@ fs.readFile(args[0], 'utf8', function(err, data) {
 
 });
 
-function downloadUrl(url, filename) {
+function downloadUrl(url) {
 	try {
 		ytdl.getInfo(url, function(err, info) {
+
+      filename = info.title.replace(/\//g,"\\");
 
 			var video = ytdl.downloadFromInfo(info, url);
 
@@ -43,7 +45,7 @@ function downloadUrl(url, filename) {
 				source: video
 			}).toFormat('mp3').pipe(fs.createWriteStream('./media/' + filename + '.mp3'));
 
-			console.log('Downloading ' + escapeStringRegexp(info.title));
+			console.log('Downloading ' + filename);
 
 		});
 	} catch (err) {
