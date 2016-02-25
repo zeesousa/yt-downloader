@@ -2,7 +2,9 @@
 Download a list of youtube videos listed on a text file (\n separated) via CLI.
 
 Command usage:
+<pre>
 node index.js <file>
+</pre>
 
 File example:
 <pre>
