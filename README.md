@@ -5,11 +5,13 @@ Command usage:
 node index.js <file>
 
 File example:
+<pre>
 https://www.youtube.com/watch?v=Y6G-srRX2ZY
 https://www.youtube.com/watch?v=Y6G-srRX2ZY
 https://www.youtube.com/watch?v=BlK4iSMqqIU
 https://www.youtube.com/watch?v=2FlHCmEwRkw
 https://www.youtube.com/watch?v=5mrVYi751SU
+</pre>
 
 The script will download each video and store it like this: ./media/<video name>.mp3
 Repeated videos will be ignored!
