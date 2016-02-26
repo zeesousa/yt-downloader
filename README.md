@@ -27,10 +27,11 @@ https://www.youtube.com/watch?v=5mrVYi751SU
 </pre>
 
 The script will download each video and store it like this: ./media/&lt;video name&gt;.mp3
+<br/>
 Repeated videos will be ignored!
 
 TO DO:
 <ul>
 <li>support various video and audio formats</li>
-<li>specify filename desired for each video</li>
+<li>specify a filename for each video link</li>
 </ul>
