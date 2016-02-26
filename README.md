@@ -3,13 +3,11 @@ Download a list of youtube videos listed on a text file (\n separated) via CLI.
 
 Installation:
 <pre>
-
 git clone https://github.com/zeesousa/yt-downloader 
 
 cd yt-downloader
 
 npm install
-
 </pre>
 
 Make sure you have nodejs and npm installed on your machine
