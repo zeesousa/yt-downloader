@@ -40,7 +40,7 @@ function downloadUrl(url) {
 	try {
 		ytdl.getInfo(url, function(err, info) {
 
-      filename = info.title.replace(/\//g,"\\");
+      filename = info.title.replace(/\/|\\/g,"-");
 
 			var video = ytdl.downloadFromInfo(info, url);
 
