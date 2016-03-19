@@ -17,12 +17,14 @@
   "author": "José Sousa",
   "license": "MIT",
   "dependencies": {
-    "ytdl-core": "~0.7.10",
-    "fs": "0.0.2",
-    "ffmpeg": "0.0.4",
-    "fluent-ffmpeg": "~2.0.1",
-    "underscore": "~1.8.3",
+    "async": "^2.0.0-rc.1",
     "escape-string-regexp": "~1.0.5",
-    "ffmpeg-static": "~1.0.0"
+    "ffmpeg": "0.0.4",
+    "ffmpeg-static": "~1.0.0",
+    "fluent-ffmpeg": "~2.0.1",
+    "fs": "0.0.2",
+    "sync-request": "^3.0.0",
+    "underscore": "~1.8.3",
+    "ytdl-core": "~0.7.10"
   }
 }
