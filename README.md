@@ -1,5 +1,5 @@
 # yt-downloader
-Download a list of youtube videos listed on a text file (\n separated) via CLI.
+Useless nodeJS based Youtube to mp3 donwloader.
 
 Installation:
 <pre>
@@ -14,7 +14,19 @@ Make sure you have nodejs and npm installed on your machine
 
 Command usage:
 <pre>
-node index.js &lt;file with links&gt;
+node index.js &lt;url&gt;
+</pre>
+
+Downloads a single video.
+
+Download a list of videos from a file:
+<pre>
+node index.js -f &lt;file with links&gt;
+</pre>
+
+Download a playlist:
+<pre>
+node index.js -p &lt;playlist link&gt;
 </pre>
 
 File example:
