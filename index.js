@@ -56,7 +56,7 @@ q.drain = function() {
 if (args[0] == '-p') {
   var videos = playlist.getPlaylistVideos(args[1]);
   downloadVideos(videos);
-} else {
+} else if (args[0] == '-f') {
   fs.readFile(args[0], 'utf8', function(err, data) {
     if (err) {
       if (err.code == 'ENOENT') {
@@ -70,12 +70,14 @@ if (args[0] == '-p') {
       downloadVideos(videos);
     }
   });
+} else {
+  downloadUrl(args[0]);
 }
 
 function downloadVideos(videos) {
   totalVideos = videos.length;
   videosDownloaded = 0;
-  console.log("Downloading "+totalVideos+" videos, its going to take a while..");
+  console.log("Downloading " + totalVideos + " videos, its going to take a while..");
   for (var i = 0; i < videos.length; i++) {
     q.push(videos[i], function(err) {
       videosDownloaded++;
