@@ -57,7 +57,7 @@ if (args[0] == '-p') {
   var videos = playlist.getPlaylistVideos(args[1]);
   downloadVideos(videos);
 } else if (args[0] == '-f') {
-  fs.readFile(args[0], 'utf8', function(err, data) {
+  fs.readFile(args[1], 'utf8', function(err, data) {
     if (err) {
       if (err.code == 'ENOENT') {
         console.log("File doesn't exist!");
