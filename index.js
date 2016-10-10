@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var fs = require('fs');
 var ytdl = require('ytdl-core');
 var ffmpegstatic = require('ffmpeg-static');
@@ -70,8 +72,13 @@ if (args[0] == '-p') {
       downloadVideos(videos);
     }
   });
-} else {
+} else if (args[0] == '-v') {
   downloadUrl(args[0]);
+} else {
+  console.log('Usage:');
+  console.log('-v <video url> | downloads a video');
+  console.log('-p <playlist url> | download a playlist');
+  console.log('-f <file location> | download a list of links from a file');
 }
 
 function downloadVideos(videos) {

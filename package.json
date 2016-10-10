@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "Download list of youtube links",
   "main": "index.js",
-  "scripts": {
-    "test": "yt-downloader <links.txt>"
+  "bin": {
+    "yt-downloader": "./index.js"
   },
   "repository": {
     "type": "git",
