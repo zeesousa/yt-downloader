@@ -9,21 +9,25 @@ var path = require('path');
 var playlist = require('./playlist');
 var escapeStringRegexp = require('escape-string-regexp');
 var async = require('async');
-
 var YouTube = require('youtube-node');
-
 var youTube = new YouTube();
+
 youTube.setKey('AIzaSyA1Zv7gKh5pSX67ylmUygUx0vWUQeAXCjo');
 
 ffmpeg.setFfmpegPath(ffmpegstatic.path);
+
+const commandLineCommands = require('command-line-commands')
+
+const validCommands = ['playlist', 'file', 'video']
+const {
+  command,
+  argv
+} = commandLineCommands(validCommands)
 
 if (!fs.existsSync('./media')) {
   fs.mkdirSync('./media');
 }
 
-//cli args
-var args = process.argv.slice(2);
-var totalVideos, videosDownloaded;
 
 var q = async.queue(function(url, callback) {
   try {
@@ -55,31 +59,38 @@ q.drain = function() {
   console.log('All videos have been downloaded');
 }
 
-if (args[0] == '-p') {
-  var videos = playlist.getPlaylistVideos(args[1]);
-  downloadVideos(videos);
-} else if (args[0] == '-f') {
-  fs.readFile(args[1], 'utf8', function(err, data) {
-    if (err) {
-      if (err.code == 'ENOENT') {
-        console.log("File doesn't exist!");
+
+switch (command) {
+  case 'playlist':
+    var videos = playlist.getPlaylistVideos(argv[0]);
+    downloadVideos(videos);
+    break;
+  case 'file':
+    fs.readFile(argv[0], 'utf8', function(err, data) {
+      if (err) {
+        if (err.code == 'ENOENT') {
+          console.log("File doesn't exist!");
+        }
+        console.log(err.message);
+      } else {
+        var videos = _.uniq(data.trim().split("\n").map(function(val) {
+          return val.trim();
+        }));
+        downloadVideos(videos);
       }
-      console.log(err.message);
-    } else {
-      var videos = _.uniq(data.trim().split("\n").map(function(val) {
-        return val.trim();
-      }));
-      downloadVideos(videos);
-    }
-  });
-} else if (args[0] == '-v') {
-  downloadUrl(args[0]);
-} else {
-  console.log('Usage:');
-  console.log('-v <video url> | downloads a video');
-  console.log('-p <playlist url> | download a playlist');
-  console.log('-f <file location> | download a list of links from a file');
+    });
+    break;
+  case 'video':
+    downloadUrl(argv[0]);
+    break;
+  default:
+    console.log('Usage:');
+    console.log('-v <video url> | downloads a video');
+    console.log('-p <playlist url> | download a playlist');
+    console.log('-f <file location> | download a list of links from a file');
 }
+
+var totalVideos, videosDownloaded;
 
 function downloadVideos(videos) {
   totalVideos = videos.length;

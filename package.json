@@ -18,6 +18,8 @@
   "license": "MIT",
   "dependencies": {
     "async": "^2.0.0-rc.1",
+    "command-line-args": "^3.0.1",
+    "command-line-commands": "^1.0.4",
     "escape-string-regexp": "~1.0.5",
     "ffmpeg": "0.0.4",
     "ffmpeg-static": "~1.0.0",
