@@ -95,6 +95,12 @@ aws-sign2@~0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/aws-sign2/-/aws-sign2-0.5.0.tgz#c57103f7a17fc037f02d7c2e64b602ea223f7d63"
 
+axios@^0.15.3:
+  version "0.15.3"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.15.3.tgz#2c9d638b2e191a08ea1d6cc988eadd6ba5bdc053"
+  dependencies:
+    follow-redirects "1.0.0"
+
 babel-code-frame@^6.16.0:
   version "6.22.0"
   resolved "https://registry.yarnpkg.com/babel-code-frame/-/babel-code-frame-6.22.0.tgz#027620bee567a88c32561574e7fd0801d33118e4"
@@ -246,7 +252,7 @@ d@^0.1.1, d@~0.1.1:
   dependencies:
     es5-ext "~0.10.2"
 
-debug@^2.1.1:
+debug@^2.1.1, debug@^2.2.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.0.tgz#bc596bcabe7617f11d9fa15361eded5608b8499b"
   dependencies:
@@ -491,6 +497,12 @@ fluent-ffmpeg@~2.0.1:
   resolved "https://registry.yarnpkg.com/fluent-ffmpeg/-/fluent-ffmpeg-2.0.1.tgz#4dddcbb82da348158380d5282d21fd4ea64bf4ce"
   dependencies:
     async ">=0.2.9"
+
+follow-redirects@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.0.0.tgz#8e34298cbd2e176f254effec75a1c78cc849fd37"
+  dependencies:
+    debug "^2.2.0"
 
 forever-agent@~0.5.0:
   version "0.5.2"

@@ -1,12 +1,9 @@
 #!/usr/bin/env node
 
 let fs = require('fs');
-let ytdl = require('ytdl-core');
-let ffmpegstatic = require('ffmpeg-static');
-let ffmpeg = require('fluent-ffmpeg');
-ffmpeg.setFfmpegPath(ffmpegstatic.path);
 let _ = require('underscore');
-let playlist = require('./playlist');
+let youtube = require('./youtube.js');
+let playlist = require('./playlist.js');
 let videoQueue = require('./queue.js');
 const commandLineCommands = require('command-line-commands');
 
@@ -22,8 +19,12 @@ if (!fs.existsSync('./media')) {
 
 switch (command) {
   case 'playlist': {
-    let videos = playlist.getVideos(argv[0]);
-    videoQueue.downloadVideos(videos);
+    playlist.getPlaylistVideos(argv[0], (err, videos) => {
+      if (err)
+        console.error('Invalid playlist url');
+      else
+        videoQueue.downloadVideos(videos);
+    });
     break;
   }
   case 'file': {
@@ -43,8 +44,10 @@ switch (command) {
     break;
   }
   case 'video': {
-    downloadUrl(argv[0])
-      .then(() => console.log('Finished downloading and converting ' + argv[0]))
+    youtube.downloadVideo(argv[0])
+      .then((title) =>
+        console.log('Finished downloading and converting ' + title)
+      )
       .catch((err) => console.log(err));
     break;
   }
@@ -53,41 +56,4 @@ switch (command) {
     console.log('-v <video url> | downloads a video');
     console.log('-p <playlist url> | download a playlist');
     console.log('-f <file location> | download a list of links from a file');
-}
-
-/**
- * Downloads a music file from a youtube video
- *
- * @param {string} url The video url
- * @return {Promise}
- */
-function downloadUrl(url) {
-  console.log(url);
-  return new Promise((resolve, reject) => {
-    try {
-      ytdl.getInfo(url, function(err, info) {
-        if (err) return reject(err);
-        if (info) {
-          let filename = info.title.replace(/\/|\\/g, '-');
-          let output = './media/' + filename + '.mp3';
-
-          console.log('Downloading ' + filename);
-
-          ffmpeg()
-            .input(ytdl(url, {
-              format: 'highest',
-              filter: 'audioonly',
-            }))
-            .toFormat('mp3')
-            .save(output)
-            .on('error', console.error)
-            .on('end', function() {
-              resolve();
-            });
-        }
-      });
-    } catch (err) {
-      reject(err);
-    }
-  });
 }
