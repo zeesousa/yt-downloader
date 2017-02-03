@@ -53,7 +53,7 @@ switch (command) {
   }
   default:
     console.log('Usage:');
-    console.log('-v <video url> | downloads a video');
-    console.log('-p <playlist url> | download a playlist');
-    console.log('-f <file location> | download a list of links from a file');
+    console.log('yt-downloader video <video url> | downloads a video');
+    console.log('yt-downloader playlist <playlist url> | download a playlist');
+    console.log('yt-downloader file <file location> | download a list of links from a file');
 }
