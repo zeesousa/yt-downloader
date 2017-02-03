@@ -3,30 +3,26 @@ Useless nodeJS based Youtube to mp3 donwloader.
 
 Installation:
 <pre>
-git clone https://github.com/zeesousa/yt-downloader 
-
-cd yt-downloader
-
-npm install
+npm install -g yt-downloader
 </pre>
 
 Make sure you have nodejs and npm installed on your machine
 
 Command usage:
 <pre>
-node index.js &lt;url&gt;
+yt-downloader video &lt;url&gt;
 </pre>
 
 Downloads a single video.
 
 Download a list of videos from a file:
 <pre>
-node index.js -f &lt;file with links&gt;
+yt-downloader file &lt;file with links&gt;
 </pre>
 
 Download a playlist:
 <pre>
-node index.js -p &lt;playlist link&gt;
+yt-downloader playlist &lt;playlist link&gt;
 </pre>
 
 File example:
@@ -38,12 +34,13 @@ https://www.youtube.com/watch?v=2FlHCmEwRkw
 https://www.youtube.com/watch?v=5mrVYi751SU
 </pre>
 
-The script will download each video and store it like this: ./media/&lt;video name&gt;.mp3
+The script will download each video and store it a folder named `media` on the directory you executed the command from.
 <br/>
 Repeated videos will be ignored!
 
 TO DO:
 <ul>
-<li>support various video and audio formats</li>
-<li>specify a filename for each video link</li>
+<li> Optionally download video </li>
+<li> More audio formats, currently only mp3 </li>
+<li> Improve parsing of command line arguments </li>
 </ul>

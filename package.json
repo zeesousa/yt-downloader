@@ -1,5 +1,5 @@
 {
-  "name": "yt-downloader-cli",
+  "name": "yt-downloader",
   "version": "0.0.1",
   "description": "Download list of youtube links",
   "main": "index.js",
@@ -14,24 +14,19 @@
     "url": "https://github.com/zeesousa/yt-downloader"
   },
   "keywords": [
-    "yt",
-    "download"
+    "youtube",
+    "download",
+    "cli"
   ],
   "author": "José Sousa",
   "license": "MIT",
   "dependencies": {
     "async": "^2.0.0-rc.1",
     "axios": "^0.15.3",
-    "command-line-args": "^3.0.1",
     "command-line-commands": "^1.0.4",
-    "escape-string-regexp": "~1.0.5",
-    "ffmpeg": "0.0.4",
     "ffmpeg-static": "~1.0.0",
     "fluent-ffmpeg": "~2.0.1",
-    "fs": "0.0.2",
-    "sync-request": "^3.0.0",
     "underscore": "~1.8.3",
-    "youtube-node": "^1.3.0",
     "ytdl-core": "~0.7.10"
   },
   "devDependencies": {
