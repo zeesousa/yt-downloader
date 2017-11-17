@@ -11,7 +11,7 @@ ffmpeg.setFfmpegPath(ffmpegstatic.path);
  */
 
 exports.downloadMedia = (url, mediaType) => {
-  let fileExtension;
+  let fileFormat;
 
   if (mediaType === 'video') {
     fileFormat = 'mp4';
