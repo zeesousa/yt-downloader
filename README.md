@@ -12,6 +12,7 @@ npm install -g yt-downloader
 Make sure you have nodejs and npm installed on your machine
 
 Command usage:
+
 Download audio track from a video:
 <pre>
 yt-downloader audio &lt;url&gt;
