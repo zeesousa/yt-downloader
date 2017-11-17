@@ -9,20 +9,30 @@ ffmpeg.setFfmpegPath(ffmpegstatic.path);
  * @param {string} url The video url
  * @return {Promise}
  */
-exports.downloadVideo = function(url) {
+
+exports.downloadMedia = (url, mediaType) => {
+  let fileExtension;
+
+  if (mediaType === 'video') {
+    fileFormat = 'mp4';
+  } else if (mediaType === 'audio') {
+    fileFormat = 'mp3'
+  }
+
   return new Promise((resolve, reject) => {
     try {
       ytdl.getInfo(url, function(err, info) {
         if (err) return reject(err);
+
         let filename = info.title.replace(/\/|\\/g, '-');
-        let output = './media/' + filename + '.mp3';
+        let output = `./media/${filename}.${fileFormat}`;
 
         ffmpeg()
           .input(ytdl(url, {
             format: 'highest',
-            filter: 'audioonly',
+            filter: mediaType,
           }))
-          .toFormat('mp3')
+          .toFormat(fileFormat)
           .save(output)
           .on('error', console.error)
           .on('end', function() {
@@ -32,5 +42,31 @@ exports.downloadVideo = function(url) {
     } catch (err) {
       reject(err);
     }
-  });
-};
+  }); 
+}
+
+// exports.downloadVideo = function(url) {
+//   return new Promise((resolve, reject) => {
+//     try {
+//       ytdl.getInfo(url, function(err, info) {
+//         if (err) return reject(err);
+//         let filename = info.title.replace(/\/|\\/g, '-');
+//         let output = './media/' + filename + '.mp4';
+
+//         ffmpeg()
+//           .input(ytdl(url, {
+//             format: 'highest',
+//             filter: 'video',
+//           }))
+//           .toFormat('mp4')
+//           .save(output)
+//           .on('error', console.error)
+//           .on('end', function() {
+//             resolve(info.title);
+//           });
+//       });
+//     } catch (err) {
+//       reject(err);
+//     }
+//   });
+// };

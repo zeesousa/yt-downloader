@@ -7,7 +7,7 @@ let playlist = require('./playlist.js');
 let videoQueue = require('./queue.js');
 const commandLineCommands = require('command-line-commands');
 
-const validCommands = ['playlist', 'file', 'video', null];
+const validCommands = ['playlist', 'file', 'video', 'audio', null];
 const {
   command,
   argv,
@@ -44,7 +44,15 @@ switch (command) {
     break;
   }
   case 'video': {
-    youtube.downloadVideo(argv[0])
+    youtube.downloadMedia(argv[0], 'video')
+      .then((title) =>
+        console.log('Finished downloading and converting ' + title)
+      )
+      .catch((err) => console.log(err));
+    break;
+  }
+  case 'audio': {
+    youtube.downloadMedia(argv[0], 'audio')
       .then((title) =>
         console.log('Finished downloading and converting ' + title)
       )
@@ -53,6 +61,7 @@ switch (command) {
   }
   default:
     console.log('Usage:');
+    console.log('yt-downloader audio <audio url> | downloads audio only')
     console.log('yt-downloader video <video url> | downloads a video');
     console.log('yt-downloader playlist <playlist url> | download a playlist');
     console.log('yt-downloader file <file location> | download a list of links from a file');
