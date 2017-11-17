@@ -44,29 +44,3 @@ exports.downloadMedia = (url, mediaType) => {
     }
   }); 
 }
-
-// exports.downloadVideo = function(url) {
-//   return new Promise((resolve, reject) => {
-//     try {
-//       ytdl.getInfo(url, function(err, info) {
-//         if (err) return reject(err);
-//         let filename = info.title.replace(/\/|\\/g, '-');
-//         let output = './media/' + filename + '.mp4';
-
-//         ffmpeg()
-//           .input(ytdl(url, {
-//             format: 'highest',
-//             filter: 'video',
-//           }))
-//           .toFormat('mp4')
-//           .save(output)
-//           .on('error', console.error)
-//           .on('end', function() {
-//             resolve(info.title);
-//           });
-//       });
-//     } catch (err) {
-//       reject(err);
-//     }
-//   });
-// };
